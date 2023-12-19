@@ -1,0 +1,201 @@
+{
+    "config": {
+        "graph_construction_args": {
+            "graph_construction_share": {
+                "graph_name": "node_emb",
+                "root_dir": "data",
+                "topology_subdir": "NodeEmbGraph",
+                "share_vocab": true,
+                "thread_number": 4,
+                "port": 9000,
+                "timeout": 15000
+            },
+            "graph_construction_private": {
+                "lower_case": false,
+                "sim_metric_type": "weighted_cosine",
+                "num_heads": 1,
+                "top_k_neigh": null,
+                "epsilon_neigh": 0.5,
+                "smoothness_ratio": 0.1,
+                "connectivity_ratio": 0.05,
+                "sparsity_ratio": 0.1,
+                "edge_strategy": "homogeneous",
+                "merge_strategy": "tailhead",
+                "sequential_link": true,
+                "as_node": false
+            }
+        },
+        "graph_initialization_args": {
+            "input_size": 300,
+            "hidden_size": 200,
+            "word_dropout": 0.1,
+            "rnn_dropout": 0.1,
+            "fix_bert_emb": false,
+            "fix_word_emb": false,
+            "embedding_style": {
+                "single_token_item": true,
+                "emb_strategy": "w2v",
+                "num_rnn_layers": 1,
+                "bert_model_name": null,
+                "bert_lower_case": null
+            }
+        },
+        "graph_embedding_args": {
+            "graph_embedding_share": {
+                "num_layers": 1,
+                "input_size": 300,
+                "hidden_size": 300,
+                "output_size": 300,
+                "direction_option": "undirected",
+                "feat_drop": 0.0,
+                "attn_drop": 0.0
+            },
+            "graph_embedding_private": {
+                "aggregator_type": "lstm",
+                "bias": true,
+                "norm": null,
+                "activation": "relu",
+                "use_edge_weight": true
+            }
+        },
+        "decoder_args": {
+            "rnn_decoder_share": {
+                "rnn_type": "lstm",
+                "input_size": 300,
+                "hidden_size": 300,
+                "rnn_emb_input_size": 300,
+                "use_copy": true,
+                "use_coverage": false,
+                "graph_pooling_strategy": null,
+                "attention_type": "uniform",
+                "fuse_strategy": "concatenate",
+                "dropout": 0.3,
+                "teacher_forcing_rate": 1.0
+            },
+            "rnn_decoder_private": {
+                "max_decoder_step": 35,
+                "max_tree_depth": 8,
+                "use_sibling": false
+            }
+        },
+        "graph_construction_name": "node_emb",
+        "graph_embedding_name": "graphsage",
+        "decoder_name": "stdtree",
+        "dataset_yaml": "./exp_2_1_emb_strategy_config.yaml",
+        "learning_rate": 0.001,
+        "gpuid": -1,
+        "seed": 123,
+        "init_weight": 0.08,
+        "weight_decay": 0,
+        "max_epochs": 200,
+        "min_freq": 1,
+        "grad_clip": 5,
+        "batch_size": 80,
+        "share_vocab": true,
+        "pretrained_word_emb_name": "6B",
+        "checkpoint_save_path": "./checkpoint_save_2_1",
+        "beam_size": 1
+    },
+    "train_data": [
+        {
+            "train_loss": 5.335347652435303,
+            "val_acc": 0.324,
+            "test_acc": 0.296
+        },
+        {
+            "train_loss": 3.1673858165740967,
+            "val_acc": 0.376,
+            "test_acc": 0.352
+        },
+        {
+            "train_loss": 1.6233552694320679,
+            "val_acc": 0.416,
+            "test_acc": 0.428
+        },
+        {
+            "train_loss": 0.8793713450431824,
+            "val_acc": 0.452,
+            "test_acc": 0.448
+        },
+        {
+            "train_loss": 0.38928866386413574,
+            "val_acc": 0.492,
+            "test_acc": 0.484
+        },
+        {
+            "train_loss": 0.19804991781711578,
+            "val_acc": 0.464,
+            "test_acc": 0.512
+        },
+        {
+            "train_loss": 0.0745166763663292,
+            "val_acc": 0.448,
+            "test_acc": 0.472
+        },
+        {
+            "train_loss": 0.05561619624495506,
+            "val_acc": 0.448,
+            "test_acc": 0.492
+        },
+        {
+            "train_loss": -0.03177095577120781,
+            "val_acc": 0.432,
+            "test_acc": 0.484
+        },
+        {
+            "train_loss": -0.0653715580701828,
+            "val_acc": 0.452,
+            "test_acc": 0.476
+        },
+        {
+            "train_loss": -0.10811930149793625,
+            "val_acc": 0.468,
+            "test_acc": 0.504
+        },
+        {
+            "train_loss": -0.06552833318710327,
+            "val_acc": 0.456,
+            "test_acc": 0.476
+        },
+        {
+            "train_loss": 0.00034650973975658417,
+            "val_acc": 0.48,
+            "test_acc": 0.496
+        },
+        {
+            "train_loss": -0.06505277007818222,
+            "val_acc": 0.464,
+            "test_acc": 0.492
+        },
+        {
+            "train_loss": -0.10766439884901047,
+            "val_acc": 0.44,
+            "test_acc": 0.48
+        },
+        {
+            "train_loss": -0.20021937787532806,
+            "val_acc": 0.464,
+            "test_acc": 0.496
+        },
+        {
+            "train_loss": -0.20593352615833282,
+            "val_acc": 0.476,
+            "test_acc": 0.5
+        },
+        {
+            "train_loss": -0.14323864877223969,
+            "val_acc": 0.46,
+            "test_acc": 0.492
+        },
+        {
+            "train_loss": -0.22455133497714996,
+            "val_acc": 0.492,
+            "test_acc": 0.512
+        },
+        {
+            "train_loss": -0.1482185572385788,
+            "val_acc": 0.472,
+            "test_acc": 0.5
+        }
+    ]
+}
